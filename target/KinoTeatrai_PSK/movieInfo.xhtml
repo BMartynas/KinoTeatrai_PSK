@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Movie #{moviesInfo.chosenMovie.name}</h2>
+
+    <h2>This movie can be seen in these cinemas:</h2>
+    <ol>
+        <ui:repeat value="#{moviesInfo.chosenMovie.cinemaList}" var="cinema">
+            <li><h3>#{cinema.name}</h3></li>
+        </ui:repeat>
+    </ol>
+    <br/>
+
+    <h:link outcome="index" value="Back to the main page"/>
+</h:body>
+</html>

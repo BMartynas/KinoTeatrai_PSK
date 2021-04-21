@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>Cinema #{cinemaDetails.chosenCinema.name}</h2>
+
+    <h:form>
+        <h:inputText a:placeholder="enter new cinema's name" value="#{cinemaUpdate.chosenCinema.name}" required="true" />
+        <h:commandButton value="update" action="#{cinemaUpdate.updateCinema()}">
+            <f:param name="cinemaId" value="#{cinemaDetails.chosenCinema.id}" />
+        </h:commandButton>
+    </h:form>
+
+    <h4>Union:  #{cinemaDetails.wunion.name}</h4>
+
+    <h2>Movies of this cinema:</h2>
+    <ol>
+        <ui:repeat value="#{cinemaDetails.chosenCinema.movieList}" var="movie">
+            <li>
+                <h:link value="#{movie.name}" outcome="movieInfo?movieId=#{movie.id}" />
+                <br/>Release year: #{movie.year}
+            </li>
+        </ui:repeat>
+    </ol>
+    <br/>
+    <h4>Add new movie:</h4>
+    <h:form>
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <h:inputText id="name" value="#{cinemaDetails.movieToCreate.name}" required="true"/>
+                    <h:message for="name" style="color: blue"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Year:</td>
+                <td>
+                    <h:inputText id="year" value="#{cinemaDetails.movieToCreate.year}" required="true"/>
+                    <h:message for="year" style="color: blue"/>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <h:commandButton value="Add" action="#{cinemaDetails.createMovie}">
+                <f:param name="id" value="#{cinemaDetails.chosenCinema.id}" />
+                <f:param name="wid" value="#{cinemaDetails.chosenCinema.wunion.id}" />
+            </h:commandButton>
+        </p>
+    </h:form>
+
+    <h:link outcome="index" value="Back to the main page"/>
+</h:body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+   <!--<h2>Cinemas:</h2>
+   <ol>
+      <ui:repeat value="#{cinemas.allCinemas}" var="cinema">
+         <li><h:link value="#{cinema.name}" outcome="cinema_details?id=#{cinema.id}"/></li>
+      </ui:repeat>
+   </ol>-->
+   <h2>Unions:</h2>
+   <ol>
+      <ui:repeat value="#{wunions.allWunions}" var="wunion">
+         <li><h:link value="#{wunion.name}" outcome="cinemas?wunionId=#{wunion.id}" /></li>
+      </ui:repeat>
+   </ol>
+   <h:form>
+
+      <h:inputText value="#{wunions.wunionToCreate.name}" required="true" />
+      <h:commandButton value="Add new union" action="#{wunions.createWunion}" />
+   </h:form>
+</h:body>
+</html>
