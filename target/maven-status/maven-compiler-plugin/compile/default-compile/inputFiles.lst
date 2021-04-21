@@ -5,8 +5,10 @@ D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\usecases\CinemasForWun
 D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\usecases\Cinemas.java
 D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\usecases\CinemaUpdate.java
 D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\persistence\CinemasDAO.java
+D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\usecases\CinemaDetails.java
+D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\persistence\MyBatisResources.java
 D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\entities\Wunion.java
+D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\services\CheckReleaseYear.java
 D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\usecases\MoviesInfo.java
 D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\entities\Movie.java
-D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\usecases\CinemaDetails.java
 D:\PS\6 semestras\KinoTeatrai_PSK\src\main\java\cinemaApp\persistence\WunionsDAO.java
