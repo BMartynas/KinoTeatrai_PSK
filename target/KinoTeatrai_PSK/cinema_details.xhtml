@@ -9,10 +9,14 @@
     <h2>Cinema #{cinemaDetails.chosenCinema.name}</h2>
 
     <h:form>
-        <h:inputText a:placeholder="enter new cinema's name" value="#{cinemaUpdate.chosenCinema.name}" required="true" />
+        <h:inputText a:placeholder="enter new cinema's name" value="#{cinemaUpdate.chosenCinema.name}"
+                     required="true" />
         <h:commandButton value="update" action="#{cinemaUpdate.updateCinema()}">
             <f:param name="cinemaId" value="#{cinemaDetails.chosenCinema.id}" />
         </h:commandButton>
+        <h:outputText value="&lt;br /&gt;Atnaujinta sėkmingai!" rendered="#{param['error'] == 'no-error'}" escape="false" />
+        <h:outputText value="&lt;br /&gt;Nepavyko pakeisti Kino teatro pavadinimo, nes jis jau buvo pakeistas.&lt;br /&gt;
+                Jei norite pakeisti, bandykite dar kartą." rendered="#{param['error'] == 'optimistic-lock-exception'}" escape="false" />
     </h:form>
 
     <h4>Union:  #{cinemaDetails.wunion.name}</h4>
@@ -21,7 +25,7 @@
     <ol>
         <ui:repeat value="#{cinemaDetails.chosenCinema.movieList}" var="movie">
             <li>
-                <h:link value="#{movie.name}" outcome="movieInfo?movieId=#{movie.id}" />
+                <h:link value="#{movie.name}" outcome="movieInfo?movieId=#{movie.id}&amp;wid=#{cinemaDetails.wunion.id}" />
                 <br/>Release year: #{movie.year}
             </li>
         </ui:repeat>

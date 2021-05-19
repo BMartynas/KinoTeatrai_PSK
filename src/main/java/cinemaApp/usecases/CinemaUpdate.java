@@ -12,11 +12,13 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.OptimisticLockException;
 import javax.transaction.Transactional;
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 
 @Model
 @Getter @Setter
-public class CinemaUpdate {
+public class CinemaUpdate implements Serializable {
     @Inject
     private CinemasDAO cinemasDAO;
 
@@ -34,9 +36,15 @@ public class CinemaUpdate {
 
     @Transactional
     public String updateCinema() {
-
-        System.out.println(this.chosenCinema.getName());
-        cinemasDAO.update(this.chosenCinema);
-        return "cinema_details.xhtml?faces-redirect=true&id="+this.chosenCinema.getId()+"&wid="+this.chosenCinema.getWunion().getId();
+        try{
+            Thread.sleep(7000);
+            cinemasDAO.update(this.chosenCinema);
+        } catch (OptimisticLockException e) {
+            return "/cinema_details.xhtml?faces-redirect=true&id="+this.chosenCinema.getId()+"&wid="+this.chosenCinema.getWunion().getId() + "&error=optimistic-lock-exception";
+        }
+        catch (InterruptedException e) {
+            System.out.println(e);
+        }
+        return "cinema_details.xhtml?faces-redirect=true&id="+this.chosenCinema.getId()+"&wid="+this.chosenCinema.getWunion().getId() + "&error=no-error";
     }
 }

@@ -1,4 +1,5 @@
 package cinemaApp.usecases;
+import cinemaApp.interceptors.LoggedInvocation;
 import lombok.Getter;
 import lombok.Setter;
 import cinemaApp.entities.Wunion;
@@ -10,8 +11,10 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import java.util.List;
 
+
 @Model
 public class Wunions {
+
     @Inject
     private WunionsDAO wunionsDAO;
 
@@ -27,6 +30,7 @@ public class Wunions {
     }
 
     @Transactional
+    @LoggedInvocation
     public String createWunion(){
         this.wunionsDAO.persist(wunionToCreate);
         return "index?faces-redirect=true";
@@ -35,4 +39,5 @@ public class Wunions {
     private void loadAllWunions(){
         this.allWunions = wunionsDAO.loadAll();
     }
+
 }

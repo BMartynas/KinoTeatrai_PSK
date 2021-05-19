@@ -1,6 +1,8 @@
 package cinemaApp.usecases;
 import cinemaApp.entities.Cinema;
+import cinemaApp.entities.Wunion;
 import cinemaApp.persistence.CinemasDAO;
+import cinemaApp.persistence.WunionsDAO;
 import lombok.Getter;
 import lombok.Setter;
 import cinemaApp.entities.Movie;
@@ -21,10 +23,13 @@ public class MoviesInfo {
 
     @Inject
     private MovieDAO movieDAO;
-
+    @Inject
+    private WunionsDAO wunionsDAO;
     @Getter
     @Setter
     private Movie chosenMovie;
+    @Getter @Setter
+    private Wunion wunion;
     private Cinema cinemaToCreate = new Cinema();
 
     @PostConstruct
@@ -33,5 +38,7 @@ public class MoviesInfo {
                 FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap();
         Integer movieId = Integer.parseInt(requestParameters.get("movieId"));
         this.chosenMovie = movieDAO.findOne(movieId);
+        Integer wid = Integer.parseInt(requestParameters.get("wid"));
+        this.wunion = wunionsDAO.findOne(wid);
     }
 }

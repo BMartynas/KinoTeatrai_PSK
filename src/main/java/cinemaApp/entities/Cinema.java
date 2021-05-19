@@ -28,16 +28,12 @@ public class Cinema implements Serializable {
     @JoinColumn(name="WUNION_ID")
     private Wunion wunion;
 
-
-
-
     @ManyToMany(mappedBy = "cinemaList",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    /*@ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "CINEMA_MOVIE", joinColumns = {
-            @JoinColumn(name = "CINEMA_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "MOVIE_ID", referencedColumnName = "ID")
-            })*/
     private Set<Movie> movieList = new HashSet<>();
+
+    @Version
+    @Column(name = "OPT_LOCK_VERSION")
+    private Integer version;
 
     public Cinema() {
 

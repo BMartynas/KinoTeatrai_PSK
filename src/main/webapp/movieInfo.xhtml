@@ -8,10 +8,22 @@
 <h:body>
     <h2>Movie #{moviesInfo.chosenMovie.name}</h2>
 
+    <h:form>
+        <h:outputText value="#{generatePromoCode.promoCodeGenerationStatus}" />
+        <br/>
+        <h:commandButton value="Generate promo code?" disabled="#{generatePromoCode.promoCodeGenerationRunning}"
+                         action="#{generatePromoCode.generateMoviePromoCode()}">
+            <f:param name="movieId" value="#{moviesInfo.chosenMovie.id}" />
+            <f:param name="wid" value="#{moviesInfo.wunion.id}" />
+        </h:commandButton>
+    </h:form>
+
     <h2>This movie can be seen in these cinemas:</h2>
     <ol>
         <ui:repeat value="#{moviesInfo.chosenMovie.cinemaList}" var="cinema">
-            <li><h3>#{cinema.name}</h3></li>
+            <li>
+            <h:link value="#{cinema.name}" outcome="cinema_details?id=#{cinema.id}&amp;wid=#{moviesInfo.wunion.id}" />
+            </li>
         </ui:repeat>
     </ol>
     <br/>

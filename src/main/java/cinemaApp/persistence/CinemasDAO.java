@@ -28,6 +28,9 @@ public class CinemasDAO {
         return em.find(Cinema.class, id);
     }
     public Cinema update(Cinema cinema){
+        /*cinema = em.merge(cinema);
+        em.flush();
+        return cinema;*/
         return em.merge(cinema);
     }
 }

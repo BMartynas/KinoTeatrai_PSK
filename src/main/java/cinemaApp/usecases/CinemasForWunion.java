@@ -1,4 +1,5 @@
 package cinemaApp.usecases;
+import cinemaApp.interceptors.LoggedInvocation;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.faces.context.FacesContext;
@@ -37,6 +38,7 @@ public class CinemasForWunion implements Serializable {
     }
 
     @Transactional
+    @LoggedInvocation
     public String createCinema() {
         cinemaToCreate.setWunion(this.wunion);
         cinemasDAO.persist(cinemaToCreate);

@@ -1,4 +1,5 @@
 package cinemaApp.usecases;
+import cinemaApp.interceptors.LoggedInvocation;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
@@ -33,6 +34,7 @@ public class Cinemas implements Serializable {
     }
 
     @Transactional
+    @LoggedInvocation
     public String createCinema() {
         this.cinemasDAO.persist(cinemaToCreate);
         return "index?faces-redirect=true";

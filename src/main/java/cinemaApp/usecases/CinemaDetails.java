@@ -7,6 +7,7 @@ import cinemaApp.persistence.CinemasDAO;
 import cinemaApp.persistence.MovieDAO;
 import cinemaApp.persistence.WunionsDAO;
 import cinemaApp.services.CheckReleaseYear;
+import cinemaApp.interceptors.LoggedInvocation;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -47,6 +48,7 @@ public class CinemaDetails {
     }
 
     @Transactional
+    @LoggedInvocation
     public String createMovie() {
         Set<Cinema> cinemaList = new HashSet<>();
         cinemaList.add(this.chosenCinema);
